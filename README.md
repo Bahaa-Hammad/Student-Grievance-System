@@ -27,7 +27,7 @@
 
 
 
-# Sprint One User Stories 
+# Sprint One
 
 ## Sprint One Prioritized User Stories 
 
