@@ -23,3 +23,52 @@ User Stories for Student Grievance System:
   b. As a university administrator, I want to ensure that all grievances are addressed timely and in compliance with university policies.
   c. As an executive sponsor, I want to review periodic reports on the system's performance to gauge its impact on student satisfaction and the institution's operations.
   d. As a university administrator, I want to ensure that all stakeholders are informed and involved in the system's successful rollout and adoption.
+
+
+
+# Sprint One User Stories 
+
+Sprint One Prioritized User Stories 
+
+Students
+Students (A): Registration and Login
+As a student, I want to easily register and log into the grievance system to report my concerns.
+
+Acceptance Criteria
+The system should provide a user-friendly registration form with fields for first name, last name, email address, and password.
+Users must receive a confirmation email upon successful registration to verify their email address.
+The login page should allow registered students to enter their email and password to access their accounts.
+Invalid login attempts should display appropriate error messages.
+Students (B): Grievance Submissions 
+As a student, I want to submit a grievance, providing all necessary details, so that my issue can be addressed accurately.
+Acceptance Criteria
+The system should provide a clear and intuitive interface for students to submit grievances.
+The grievance form should include fields for the student to enter their personal information, grievance type, description, and any supporting documents.
+The system should validate that all mandatory fields are filled before allowing submission.
+Upon submission, the system should generate a unique grievance ID and provide a confirmation message to the student.
+Submitted grievances should be time stamped and stored securely in the database.
+
+
+
+Staff & Faculty 
+Staff & Faculty (B): Grievance Review
+As a faculty member, I want to review grievances related to my department or courses to take necessary actions. 
+
+Acceptance Criteria
+Staff and faculty members should have individual accounts with access to a dashboard.
+The dashboard should display a list of grievances related to the faculty member's department or courses.
+Grievances should be categorized and sortable by grievance type, date, and status.
+Faculty members should be able to click on a grievance to view its details and supporting documents.
+
+
+IT Department 
+IT Department (C)
+As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations. 
+
+Acceptance Criteria
+Data storage, transmission, and access should be encrypted to protect sensitive information.
+User access to student data and grievances should be role-based and restricted to authorized personnel only.
+
+# Sprint One Database Schema 
+![SGS Sprint One](https://github.com/Bahaa-Hammad/Student-Grievance-System/assets/89856041/073be02a-dc45-41f4-8c2a-fe5ccc885d04)
+
