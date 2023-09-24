@@ -46,6 +46,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_student = models.BooleanField(default=False)
+    department = models.ManyToManyField('grievance.Department', blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
     
 
