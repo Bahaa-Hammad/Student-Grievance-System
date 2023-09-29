@@ -6,11 +6,13 @@ import uuid
 
 from django.contrib.auth.base_user import BaseUserManager
 
+
 class AccountManager(BaseUserManager):
     """
     Custom user model manager where email is the unique identifiers
     for authentication instead of usernames.
     """
+
     def create_user(self, email, password, **extra_fields):
         """
         Create and save a user with the given email and password.
@@ -39,7 +41,7 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
-    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     email = models.EmailField(_("email address"), unique=True)
     first_name = models.CharField(max_length=20, blank=True, null=True)
     last_name = models.CharField(max_length=20, blank=True, null=True)
@@ -48,13 +50,12 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_student = models.BooleanField(default=False)
     department = models.ManyToManyField('grievance.Department', blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
-    
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
     objects = AccountManager()
-    
+
     class Meta:
         ordering = ['date_joined']
 

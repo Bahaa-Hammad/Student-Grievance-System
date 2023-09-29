@@ -2,11 +2,12 @@ import uuid
 from django.db import models
 from account.models import Account
 
+
 class Grievance(models.Model):
-    STATUS = (('Solved', 'Solved'), ('InProgress', 'InProgress'), ('Pending', 'Pending'))
-    TYPE = (('ClassRoom', "Class Room"), ('Teacher', "Teacher"), ('Management', "Management"), ('College', "College"), ('Other', "Other"))
-    
-    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
+    STATUS = ((1, 'Solved'), (2, 'InProgress'), (3, 'Pending'))
+    TYPE = (('ClassRoom', "Class Room"), ('Teacher', "Teacher"), ('Management', "Management"), ('Other', "Other"))
+
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     department = models.ManyToManyField('Department', blank=True)
     student = models.ForeignKey(Account, on_delete=models.CASCADE, default=None)
 
@@ -19,9 +20,11 @@ class Grievance(models.Model):
     def __str__(self):
         return str(self.subject)
 
+
 class Department(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, unique=True,primary_key=True, editable=False)
-    name = models.CharField(max_length=200)
+    TYPE = ((1, "CAD"), (2, "CBA"), (3, "CCIS"), (4, "CE"), (5, "CHS"), (6, "CL"))
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    name = models.CharField(choices=TYPE, max_length=200)
 
     def __str__(self):
         return self.name
