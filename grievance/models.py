@@ -20,6 +20,22 @@ class Grievance(models.Model):
     def __str__(self):
         return str(self.subject)
 
+    def get_student_grievance(id, student: Account):
+        grievance = Grievance.objects.get(id=id, student=student)
+
+        if grievance:
+            return grievance
+        else:
+            return None
+
+    def get_student_grievances(student: Account):
+        grievances = Grievance.objects.get(student=student)
+
+        if grievances:
+            return grievances
+        else:
+            return None
+
 
 class Department(models.Model):
     TYPE = ((1, "CAD"), (2, "CBA"), (3, "CCIS"), (4, "CE"), (5, "CHS"), (6, "CL"))

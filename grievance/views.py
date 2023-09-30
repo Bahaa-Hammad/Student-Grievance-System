@@ -15,7 +15,6 @@ def submit_grievance(request):
             grievance = form.save(commit=False)
             grievance.student = student
             grievance.save()
-            print(grievance)
             return redirect('grievances')
 
     context = {'form': form}
@@ -25,7 +24,7 @@ def submit_grievance(request):
 @login_required(login_url="login")
 def submited_grievances(request):
     student = request.user
-    grievances = Grievance.objects.get(student=student)
+    grievances = Grievance.get_student_grievances(student)
     return render(request, 'grievance/submited_grievances.html', {'grievances': grievances})
 
 
@@ -33,5 +32,5 @@ def submited_grievances(request):
 def grievance(request, pk):
     student = request.user
 
-    grievance = Grievance.objects.get(student=student, id=pk)
+    grievance = Grievance.get_student_grievance(id=pk, student=student)
     return render(request, 'grievance/grievance.html', {'grievance': grievance})

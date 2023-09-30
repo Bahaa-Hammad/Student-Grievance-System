@@ -61,3 +61,17 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def get_account(email: str):
+        account = Account.objects.get(email=email)
+
+        if account:
+            return account
+        return None
+
+    def get_student_accounts():
+        students = Account.objects.get(is_student=True)
+
+        if students:
+            return students
+        return None
