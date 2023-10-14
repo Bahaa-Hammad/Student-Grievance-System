@@ -12,6 +12,17 @@ body {
     font-size: 24px;
     font-weight: bold;
 }
+
+.submit{
+    background-color: #18427a;
+    color: #ffffff;
+    border-radius: 7px;
+}
+.submit:hover {
+    background: rgb(0, 77, 177);
+    color: #000000;
+}
+
 .table {
     color: #000000;
     background-color: rgba(128, 128, 128, 0.13);
