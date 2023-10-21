@@ -48,8 +48,11 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_student = models.BooleanField(default=False)
-    department = models.ManyToManyField('grievance.Department', blank=True)
+    # department = models.ManyToManyField('grievance.Department', blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
+    reset_password = models.BooleanField(default=False)
+    email_confirmed = models.BooleanField(default=False)
+    email_reset = models.BooleanField(default=False)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
