@@ -42,7 +42,7 @@ class AccountTest(TestCase):
         
 
     def test_make_hash_value(self):
-        # Create a user instance with necessary attributes
+        # Create a user instance with necessary attributes.
         user = Account(pk=1, email_reset="test@example.com")  # Replace with your actual user model
 
         # Create a timestamp
