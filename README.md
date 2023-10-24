@@ -75,3 +75,27 @@ User access to student data and grievances should be role-based and restricted t
 ## Sprint One Database Schema 
 ![SGS Sprint One](https://github.com/Bahaa-Hammad/Student-Grievance-System/assets/89856041/073be02a-dc45-41f4-8c2a-fe5ccc885d04)
 
+
+# Sprint Two
+
+## Sprint Two Prioritized User Stories 
+
+### Students
+#### Students (C): Grievance Status View
+- As a student, I want to view the status of my grievances to monitor their progress towards resolution. 
+
+#### Acceptance Criteria
+- After logging in, students should be able to view a list of their submitted grievances.
+- Students should be able to search for specific grievances based on grievance ID or type.
+- Students should have the ability to filter grievances by status (open, resolved).
+- Students should be able to click on a specific grievance to view its details, including the description and any supporting documents.
+
+#### Staff and Faculty (C): Grievance Status Update
+- As a staff or faculty member, I want to update the status of grievances I'm handling to keep relevant parties informed.
+
+#### Acceptance Criteria
+- After logging in, staff and faculty members should access a dashboard listing grievances assigned to them.
+- The system should provide an option to update the status of each grievance, allowing staff and faculty members to indicate if a grievance is "in progress," "resolved," or any other relevant status. 
+- When updating the status, staff and faculty members should have the ability to add comments or notes to provide additional context or updates regarding the grievance. 
+- Clicking on a specific grievance should allow a detailed view, including the grievance's description, status history, and any attached files or references.
+
