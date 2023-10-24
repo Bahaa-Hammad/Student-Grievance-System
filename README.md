@@ -9,7 +9,7 @@
 - As a student, I want to receive notifications about any updates or changes related to my grievances to stay informed.
 - As a student, I want access to a user manual or guide to understand how to use the system effectively.
 ### Staff & Faculty
--  As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
+- As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
 - As a faculty member, I want to review grievances related to my department or courses to take necessary actions.
 - As a staff or faculty member, I want to update the status of grievances I'm handling to keep relevant parties informed.
 - As a staff member, I want to attend training sessions to understand how to utilize the system optimally.
@@ -42,7 +42,7 @@ As a student, I want to easily register and log into the grievance system to rep
 - Invalid login attempts should display appropriate error messages.
 
 #### Students (B): Grievance Submissions 
-As a student, I want to submit a grievance, providing all necessary details, so that my issue can be addressed accurately.
+- As a student, I want to submit a grievance, providing all necessary details, so that my issue can be addressed accurately.
 
 ##### Acceptance Criteria
 - The system should provide a clear and intuitive interface for students to submit grievances.
@@ -55,7 +55,7 @@ As a student, I want to submit a grievance, providing all necessary details, so 
 
 ### Staff & Faculty 
 #### Staff & Faculty (B): Grievance Review
-As a faculty member, I want to review grievances related to my department or courses to take necessary actions. 
+- As a faculty member, I want to review grievances related to my department or courses to take necessary actions. 
 
 ##### Acceptance Criteria
 - Staff and faculty members should have individual accounts with access to a dashboard.
@@ -66,11 +66,11 @@ As a faculty member, I want to review grievances related to my department or cou
 
 ### IT Department 
 #### IT Department (C)
-As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations. 
+- As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations. 
 
 ##### Acceptance Criteria
-Data storage, transmission, and access should be encrypted to protect sensitive information.
-User access to student data and grievances should be role-based and restricted to authorized personnel only.
+- Data storage, transmission, and access should be encrypted to protect sensitive information.
+- User access to student data and grievances should be role-based and restricted to authorized personnel only.
 
 ## Sprint One Database Schema 
 ![SGS Sprint One](https://github.com/Bahaa-Hammad/Student-Grievance-System/assets/89856041/073be02a-dc45-41f4-8c2a-fe5ccc885d04)
