@@ -46,7 +46,21 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Login</button>
                 </form>
-                
+                               <script>
+                    document.getElementById('loginForm').addEventListener('submit', function (event) {
+                      event.preventDefault(); 
+                  
+                      const userTypeSelect = document.getElementById('userType');
+                      const selectedUserType = userTypeSelect.value;
+                  
+                      if (selectedUserType === 'student') {
+                        window.location.href = 'studentDashboard.html'; 
+                      } else if (selectedUserType === 'faculty') {
+                        window.location.href = 'facultyDashboard.html'; 
+                      }
+                      
+                    });
+                  </script>   
                 
                 <!-- Placeholder for backend error or status messages -->
                 <div id="loginFeedback" class="mt-3"></div>
