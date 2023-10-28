@@ -99,3 +99,16 @@ As a student, I want to easily register and log into the grievance system to rep
 - When updating the status, staff and faculty members should have the ability to add comments or notes to provide additional context or updates regarding the grievance. 
 - Clicking on a specific grievance should allow a detailed view, including the grievance's description, status history, and any attached files or references.
 
+
+# Sprint Three
+
+## Sprint Three Prioritized User Stories
+
+### Students
+#### Students (D): Grievance Notification 
+- As a student, I want to receive notifications about any updates or changes related to my grievances to stay informed
+
+#### Acceptance Criteria
+- When a student submits a grievance, they should automatically be subscribed to receive notifications regarding updates or changes related to their grievance.
+- The notifications should be sent via the email
+- The notification should include clear and concise information about the update or change to the grievance
