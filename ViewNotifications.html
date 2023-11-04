@@ -68,6 +68,39 @@
             </tbody>
         </table>
     </div>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var tableBody = document.querySelector('.table tbody');
+        
+            // Retrieve notifications from localStorage
+            var notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+        
+            // Clear existing rows in the table body
+            tableBody.innerHTML = '';
+        
+            // Create a new row for each notification and append it to the table body
+            notifications.forEach(function(notification) {
+                var row = tableBody.insertRow();
+        
+                var cellGrievanceType = row.insertCell(0);
+                cellGrievanceType.textContent = notification.grievanceType;
+        
+                var cellDateSubmitted = row.insertCell(1);
+                cellDateSubmitted.textContent = notification.dateSubmitted;
+        
+                var cellStatus = row.insertCell(2);
+                cellStatus.textContent = notification.status;
+        
+                var cellCourseDepartment = row.insertCell(3);
+  cellCourseDepartment.textContent = notification.courseDepartment;
+        
+                var cellComment = row.insertCell(4);
+                cellComment.innerHTML = `<textarea rows="1" cols="10" readonly>${notification.comment}</textarea>`;
+            });
+        
+            // Optionally clear notifications from localStorage if you want the notifications to only appear once
+            localStorage.removeItem('notifications');
+        });
+        </script>
 </body>
 </html>
