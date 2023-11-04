@@ -66,8 +66,8 @@
                     <td>Grading Issue</td>
                     <td>01/01/2023</td>
                     <td><select name="status" id="status">
-                        <option value="in_progress">Under progress</option>
-                        <option value="resolved">Resolved</option>
+                        <option value="Under progress">Under progress</option>
+                        <option value="Resolved">Resolved</option>
                       </select>
                     </td>
                     <td>CS101 - Intro to Programming</td>
@@ -121,9 +121,55 @@
             </tbody>
         </table>
 
-        <!-- Additional Features and Links for Staff & Faculty can be added below -->
     </div>
 </section>
+<script>
+   // Function to handle the submission of the faculty response
+function submitResponse(event, row) {
+  // Prevent the form from submitting the traditional way
+  event.preventDefault();
 
+  // Retrieve the input values from the row
+  const studentName = row.querySelector('td:nth-child(1)').innerText;
+  const grievanceType = row.querySelector('td:nth-child(2)').innerText;
+  const dateSubmitted = row.querySelector('td:nth-child(3)').innerText;
+  const status = row.querySelector('select[name="status"]').value;
+  const courseDepartment = row.querySelector('td:nth-child(5)').innerText; // Changed from 'course' to 'courseDepartment'
+  const comment = row.querySelector('textarea[name="w3review"]').value;
+
+  // Create an object with the data
+  const response = {
+    studentName,
+    grievanceType,
+    dateSubmitted,
+    status,
+    courseDepartment, // Changed to match the table column name
+    comment
+  };
+
+
+  
+      // Retrieve the existing notifications array from localStorage, or initialize an empty array if it doesn't exist
+      const notifications = JSON.parse(localStorage.getItem('notifications')) || [];
+      notifications.push(response);
+  
+      // Save the updated notifications array to localStorage
+      localStorage.setItem('notifications', JSON.stringify(notifications));
+  
+      // Optionally, add feedback for the faculty member here, like a message saying the submission was successful
+      alert('Response submitted successfully.');
+    }
+  
+    // Attach the submit event to all submit buttons
+    document.addEventListener('DOMContentLoaded', () => {
+      const submitButtons = document.querySelectorAll('.submit');
+      submitButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+          const row = button.closest('tr');
+          submitResponse(event, row);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
