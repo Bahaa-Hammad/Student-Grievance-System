@@ -9,7 +9,7 @@
 - As a student, I want to receive notifications about any updates or changes related to my grievances to stay informed.
 - As a student, I want access to a user manual or guide to understand how to use the system effectively.
 ### Staff & Faculty
--  As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
+- As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
 - As a faculty member, I want to review grievances related to my department or courses to take necessary actions.
 - As a staff or faculty member, I want to update the status of grievances I'm handling to keep relevant parties informed.
 - As a staff member, I want to attend training sessions to understand how to utilize the system optimally.
@@ -42,7 +42,7 @@ As a student, I want to easily register and log into the grievance system to rep
 - Invalid login attempts should display appropriate error messages.
 
 #### Students (B): Grievance Submissions 
-As a student, I want to submit a grievance, providing all necessary details, so that my issue can be addressed accurately.
+- As a student, I want to submit a grievance, providing all necessary details, so that my issue can be addressed accurately.
 
 ##### Acceptance Criteria
 - The system should provide a clear and intuitive interface for students to submit grievances.
@@ -55,7 +55,7 @@ As a student, I want to submit a grievance, providing all necessary details, so 
 
 ### Staff & Faculty 
 #### Staff & Faculty (B): Grievance Review
-As a faculty member, I want to review grievances related to my department or courses to take necessary actions. 
+- As a faculty member, I want to review grievances related to my department or courses to take necessary actions. 
 
 ##### Acceptance Criteria
 - Staff and faculty members should have individual accounts with access to a dashboard.
@@ -66,12 +66,49 @@ As a faculty member, I want to review grievances related to my department or cou
 
 ### IT Department 
 #### IT Department (C)
-As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations. 
+- As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations. 
 
 ##### Acceptance Criteria
-Data storage, transmission, and access should be encrypted to protect sensitive information.
-User access to student data and grievances should be role-based and restricted to authorized personnel only.
+- Data storage, transmission, and access should be encrypted to protect sensitive information.
+- User access to student data and grievances should be role-based and restricted to authorized personnel only.
 
 ## Sprint One Database Schema 
 ![SGS Sprint One](https://github.com/Bahaa-Hammad/Student-Grievance-System/assets/89856041/073be02a-dc45-41f4-8c2a-fe5ccc885d04)
 
+
+# Sprint Two
+
+## Sprint Two Prioritized User Stories 
+
+### Students
+#### Students (C): Grievance Status View
+- As a student, I want to view the status of my grievances to monitor their progress towards resolution. 
+
+#### Acceptance Criteria
+- After logging in, students should be able to view a list of their submitted grievances.
+- Students should be able to search for specific grievances based on grievance ID or type.
+- Students should have the ability to filter grievances by status (open, resolved).
+- Students should be able to click on a specific grievance to view its details, including the description and any supporting documents.
+
+#### Staff and Faculty (C): Grievance Status Update
+- As a staff or faculty member, I want to update the status of grievances I'm handling to keep relevant parties informed.
+
+#### Acceptance Criteria
+- After logging in, staff and faculty members should access a dashboard listing grievances assigned to them.
+- The system should provide an option to update the status of each grievance, allowing staff and faculty members to indicate if a grievance is "in progress," "resolved," or any other relevant status. 
+- When updating the status, staff and faculty members should have the ability to add comments or notes to provide additional context or updates regarding the grievance. 
+- Clicking on a specific grievance should allow a detailed view, including the grievance's description, status history, and any attached files or references.
+
+
+# Sprint Three
+
+## Sprint Three Prioritized User Stories
+
+### Students
+#### Students (D): Grievance Notification 
+- As a student, I want to receive notifications about any updates or changes related to my grievances to stay informed
+
+#### Acceptance Criteria
+- When a student submits a grievance, they should automatically be subscribed to receive notifications regarding updates or changes related to their grievance.
+- The notifications should be sent via the email
+- The notification should include clear and concise information about the update or change to the grievance
