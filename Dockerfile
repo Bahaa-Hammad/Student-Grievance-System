@@ -30,7 +30,6 @@ RUN sed -i 's/\r$//g' /usr/src/app/entrypoint.sh
 RUN chmod +x /usr/src/app/entrypoint.sh
 
 RUN python -m pip install requests
-RUN python discord.py
 # copy project
 COPY . .
 # run entrypoint.sh
