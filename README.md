@@ -3,28 +3,18 @@
 ## User Stories for Student Grievance System
 
 ### Students
-- As a student, I want to easily register and log into the grievance system to report my concerns.
+- As a student, I want to easily log into the grievance system to report my concerns.
 - As a student, I want to submit a grievance, providing all necessary details, so that my issue can be addressed accurately.
 - As a student, I want to view the status of my grievances to monitor their progress towards resolution.
 - As a student, I want to receive notifications about any updates or changes related to my grievances to stay informed.
-- As a student, I want access to a user manual or guide to understand how to use the system effectively.
-### Staff & Faculty
-- As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
+
+### Faculty
 - As a faculty member, I want to review grievances related to my department or courses to take necessary actions.
 - As a staff or faculty member, I want to update the status of grievances I'm handling to keep relevant parties informed.
-- As a staff member, I want to attend training sessions to understand how to utilize the system optimally.
-- As a staff or faculty member, I want access to support if I encounter issues with the system.
-### IT Department
-- As an IT administrator, I want to ensure the system's integration with existing databases and platforms is seamless.
-- As an IT personnel, I want to monitor the system's uptime and ensure it meets the target.
-- As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations.
-- As an IT staff member, I want to provide support for any technical issues users might face.
-### University Administration
-- As a university administrator, I want to view KPIs to monitor the system's effectiveness and performance.
-- As a university administrator, I want to ensure that all grievances are addressed timely and in compliance with university policies.
-- As an executive sponsor, I want to review periodic reports on the system's performance to gauge its impact on student satisfaction and the institution's operations.
-- As a university administrator, I want to ensure that all stakeholders are informed and involved in the system's successful rollout and adoption.
+- As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
 
+### IT Department
+- As an IT administrator, I want to ensure that the grievance system complies with all data security and privacy regulations.
 
 
 # Sprint One
@@ -90,6 +80,7 @@ As a student, I want to easily register and log into the grievance system to rep
 - Students should have the ability to filter grievances by status (open, resolved).
 - Students should be able to click on a specific grievance to view its details, including the description and any supporting documents.
 
+### Staff and Faculty
 #### Staff and Faculty (C): Grievance Status Update
 - As a staff or faculty member, I want to update the status of grievances I'm handling to keep relevant parties informed.
 
@@ -112,3 +103,13 @@ As a student, I want to easily register and log into the grievance system to rep
 - When a student submits a grievance, they should automatically be subscribed to receive notifications regarding updates or changes related to their grievance.
 - The notifications should be sent via the email
 - The notification should include clear and concise information about the update or change to the grievance
+
+### Staff and Faculty 
+#### Staff and Faculty (C): Grievance Status Update
+- As a staff member, I want to receive notifications of new grievances assigned to me for resolution.
+
+#### Acceptance Criteria
+- When a staff is given a grievance, they should receive a notification for the grievance that are assigned to him
+- The notifications should be sent via the email
+- The notification should provide some information about the grievance case.
+
