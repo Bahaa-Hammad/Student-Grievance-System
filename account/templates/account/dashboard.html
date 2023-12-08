@@ -1,0 +1,46 @@
+{% extends "templates/boilerplate.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+    <!-- Dashboard Header -->
+    <h1 class="mb-4">Dashboard</h1>
+
+    <!-- Section 2: Submit a Grievance -->
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="{% url 'submit-grievance' %}" class="btn btn-primary">Submit A Grevrance</a>
+        </div>
+    </div>
+
+    <!-- Section 3: Table of Submitted Grievances -->
+    <div class="row">
+        <div class="col">
+            <h3>Submitted Grievances</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Grievance ID</th>
+                        <th>Status</th>
+                        <th>View Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for grievance in grievances %}
+                    <tr>
+                        <td>{{ grievance.id }}</td>
+                        <td class="text-info">{{ grievance.get_status_display }}</td>
+                        <td class="text-primary"><a href="{% url 'grievance' grievance.id %}">View</a></td>
+                    </tr>
+                    {% empty %}
+                        <tr><td colspan="3">No grievances submitted.</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

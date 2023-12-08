@@ -1,23 +1,10 @@
 from django.contrib import admin
 from .models import Account, Department
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-
-from .models import Account
-from .forms import UserCreationForm
-    
-class AccountAdmin(BaseUserAdmin):
-    add_form = UserCreationForm
-
-    list_display = ('email', 'is_staff',  'is_superuser')
-    list_filter = ('is_superuser',)
-
-    search_fields = ('email',)
-    ordering = ('email',)
-    filter_horizontal = ()
     
 admin.site.site_header = 'Student Grievance System'
 admin.site.site_title = 'Student Grievance System'
 admin.site.index_title = 'Student Grievance System'
 
-admin.site.register(Account, AccountAdmin)
+admin.site.register(Account)
+admin.site.register(Department)

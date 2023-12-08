@@ -1,1 +1,42 @@
-{{form}}
+{% extends "templates/boilerplate.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Grievance Submission Form</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Subject Field -->
+        <div class="form-group">
+            <label for="id_subject">Subject</label>
+            {{ form.subject }}
+        </div>
+
+        <!-- Type of Complaint Field -->
+        <div class="form-group">
+            <label for="id_type_of_complaint">Type of Complaint</label>
+            {{ form.type_of_complaint }}
+        </div>
+
+        <!-- Department Field -->
+        <div class="form-group">
+            <label for="id_department">Department</label>
+            {{ form.department }}
+        </div>
+
+        <!-- Description Field -->
+        <div class="form-group">
+            <label for="id_description">Description</label>
+            {{ form.description }}
+        </div>
+
+        <br>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Submit Grievance</button>
+    </form>
+</div>
+{% endblock %}

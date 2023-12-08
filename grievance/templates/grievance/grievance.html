@@ -1,1 +1,29 @@
-{{grievance}}
+{% extends "templates/boilerplate.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    {% if grievance %}
+        <div class="card my-4">
+            <div class="card-header bg-danger text-white">
+                Grievance Detail
+            </div>
+            <div class="card-body p-4">
+                <h4 class="card-title">{{ grievance.subject }}</h4>
+                <h6 class="card-subtitle mb-3 text-muted">Type: {{ grievance.get_type_of_complaint_display }}</h6>
+                <p class="card-text">{{ grievance.description }}</p>
+                <p class="card-text">Department: {{ grievance.department }}</p>
+                <p class="card-text">Submitted by: {{ grievance.student }}</p>
+                <p class="card-text">Date: {{ grievance.date }}</p>
+                <span class="badge bg-warning text-dark">{{ grievance.get_status_display }}</span>
+            </div>
+        </div>
+    {% else %}
+        <p>No grievance found.</p>
+    {% endif %}
+</div>
+
+
+{% endblock %}

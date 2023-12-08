@@ -1,11 +1,12 @@
 import uuid
 from django.db import models
+from django.forms import ValidationError
 from account.models import Account, Department
 
 
 class Grievance(models.Model):
     STATUS = ((1, 'Solved'), (2, 'InProgress'), (3, 'Pending'))
-    TYPE = (('ClassRoom', "Class Room"), ('Teacher', "Teacher"), ('Management', "Management"), ('Other', "Other"))
+    TYPE = ((1, "Class Room"), (2, "Teacher"), (3, "Management"), (4, "Other"))
 
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
@@ -19,6 +20,20 @@ class Grievance(models.Model):
 
     def __str__(self):
         return str(self.subject)
+    
+    def create_student_grievance(subject, type_of_complaint, department, description, student):
+        """
+            Create a Grievance instance from form data.
+            return: Grievance instance if successful, None otherwise
+        """
+        try:
+
+            grievance = Grievance.objects.create(subject=subject, type_of_complaint=type_of_complaint,department=department, description=description, student=student)
+            grievance.save()
+            
+            return grievance
+        except (ValidationError, Exception) as e:
+            return None
 
     def get_student_grievance(id, student: Account):
         grievance = Grievance.objects.get(id=id, student=student)
@@ -29,7 +44,7 @@ class Grievance(models.Model):
             return None
 
     def get_student_grievances(student: Account):
-        grievances = Grievance.objects.get(student=student)
+        grievances = Grievance.objects.filter(student=student)
 
         if grievances:
             return grievances
