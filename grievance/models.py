@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-from account.models import Account
+from account.models import Account, Department
 
 
 class Grievance(models.Model):
@@ -8,8 +8,8 @@ class Grievance(models.Model):
     TYPE = (('ClassRoom', "Class Room"), ('Teacher', "Teacher"), ('Management', "Management"), ('Other', "Other"))
 
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    department = models.ManyToManyField('Department', blank=True)
-    student = models.ForeignKey(Account, on_delete=models.CASCADE, default=None)
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
+    student = models.ForeignKey('account.Account', on_delete=models.CASCADE, default=None)
 
     subject = models.CharField(max_length=200, blank=False, null=True)
     type_of_complaint = models.CharField(choices=TYPE, null=True, max_length=200)
@@ -36,11 +36,3 @@ class Grievance(models.Model):
         else:
             return None
 
-
-class Department(models.Model):
-    TYPE = ((1, "CAD"), (2, "CBA"), (3, "CCIS"), (4, "CE"), (5, "CHS"), (6, "CL"))
-    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
-    name = models.CharField(choices=TYPE, max_length=200)
-
-    def __str__(self):
-        return self.name

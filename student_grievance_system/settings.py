@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'grievance'
+    'grievance',
+    'landing_page'
 ]
 
 MIDDLEWARE = [
@@ -54,11 +55,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'student_grievance_system.urls'
-
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(SETTINGS_PATH, '')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,10 +126,10 @@ MEDIA_URL = '/images/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',
+    os.path.join(BASE_DIR, 'static'),
 ]
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

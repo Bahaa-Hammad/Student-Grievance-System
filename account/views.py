@@ -14,9 +14,7 @@ def register_student_account(request):
     if request.method == 'POST':
         form = AccountCreationForm(request.POST)
         if form.is_valid():
-            account = form.save(commit=False)
-            account.is_student = True
-            account.save()
+            account = Account.create_account(form.email, form.password1)
             messages.success(request, 'Account was created!')
             login(request, account)
         else:
