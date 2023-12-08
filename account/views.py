@@ -1,6 +1,6 @@
 from django.shortcuts import redirect, render
-
 from account.models import Account
+from grievance.models import Grievance
 from .forms import LogInForm, AccountCreationForm
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
@@ -14,11 +14,18 @@ def register_student_account(request):
     if request.method == 'POST':
         form = AccountCreationForm(request.POST)
         if form.is_valid():
-            account = Account.create_account(form.email, form.password1)
-            messages.success(request, 'Account was created!')
-            login(request, account)
-        else:
-            messages.error(request, 'An error has occurred during registration')
+            email = form.cleaned_data.get("email")
+            password = form.cleaned_data.get("password1")
+            first_name = form.cleaned_data.get("first_name")
+            last_name = form.cleaned_data.get("last_name")
+            account = Account.create_student_account(email,password,first_name,last_name)
+
+            if account:
+                messages.success(request, 'Account was created!')
+                login(request, account)
+                return render(request, 'account/dashboard.html')
+            else:
+                messages.error(request, 'An error has occurred during registration')
 
     context = {'form': form}
     return render(request, 'account/register.html', context)
@@ -52,6 +59,7 @@ def logout_account(request):
 
 @login_required(login_url='login')
 def account_dashboard(request):
-    print(request.user)
-    context = {'null': 'null'}
+    student = request.user
+    grievances = Grievance.get_student_grievances(student=student)
+    context = {'grievances': grievances}
     return render(request, 'account/dashboard.html', context)

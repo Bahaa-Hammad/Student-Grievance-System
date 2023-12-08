@@ -51,7 +51,6 @@ class Department(models.Model):
     ('CL', 'College of Law'),
 )
     name = models.CharField(max_length=100, choices=DEPARTMENT_CHOICES)
-    description = models.TextField()
 
     def __str__(self):
         return self.get_name_display()  # Returns the readable name for the department
@@ -64,7 +63,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_student = models.BooleanField(default=False)
-    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True)
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     date_joined = models.DateTimeField(default=timezone.now)
     reset_password = models.BooleanField(default=False)
     email_confirmed = models.BooleanField(default=False)
@@ -72,7 +71,6 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
-
     objects = AccountManager()
 
     class Meta:
