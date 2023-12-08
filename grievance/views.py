@@ -43,4 +43,6 @@ def grievance(request, pk):
     student = request.user
 
     grievance = Grievance.get_student_grievance(id=pk, student=student)
-    return render(request, 'grievance/grievance.html', {'grievance': grievance})
+    related_notifications = grievance.notifications.all()
+    print(related_notifications)
+    return render(request, 'grievance/grievance.html', {'grievance': grievance, 'related_notifications':related_notifications})

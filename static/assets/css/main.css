@@ -42,7 +42,7 @@ a {
 }
 
 a:hover {
-  color: #00b6a1;
+  color: #2e3288;
   text-decoration: none;
 }
 
@@ -1827,7 +1827,7 @@ section {
 .contact .php-email-form .sent-message {
   display: none;
   color: #fff;
-  background: #059652;
+  background: #2e3288;
   text-align: center;
   padding: 15px;
   font-weight: 600;

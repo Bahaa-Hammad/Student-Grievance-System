@@ -15,7 +15,7 @@
             <a href="{% url 'submit-grievance' %}" class="btn btn-primary">Submit A Grevrance</a>
         </div>
     </div>
-
+    <br>
     <!-- Section 3: Table of Submitted Grievances -->
     <div class="row">
         <div class="col">
@@ -23,7 +23,8 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Grievance ID</th>
+                        <th>ID</th>
+                        <th>Subject</th>
                         <th>Status</th>
                         <th>View Details</th>
                     </tr>
@@ -32,6 +33,7 @@
                     {% for grievance in grievances %}
                     <tr>
                         <td>{{ grievance.id }}</td>
+                        <td>{{ grievance.subject }}</td>
                         <td class="text-info">{{ grievance.get_status_display }}</td>
                         <td class="text-primary"><a href="{% url 'grievance' grievance.id %}">View</a></td>
                     </tr>

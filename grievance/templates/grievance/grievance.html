@@ -25,5 +25,17 @@
     {% endif %}
 </div>
 
-
+<div class="container">
+    <h3>Related Notifications</h3>
+    {% if related_notifications %}
+        {% for notification in related_notifications %}
+            <div class="alert alert-danger" role="alert">
+                <strong>{{ notification.message }}:</strong>
+                <span class="badge badge-secondary float-right text-dark">{{ notification.created_at|date:"Y-m-d H:i" }}</span>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No related notifications found.</p>
+    {% endif %}
+</div>
 {% endblock %}
