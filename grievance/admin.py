@@ -22,7 +22,15 @@ class GrievanceAdmin(admin.ModelAdmin):
     form = GrievanceAdminForm
     list_display = ['subject', 'student', 'status']
     ordering = ['date']
-
+    
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs  # Superuser can see all grievances
+            if request.user.is_staff:
+                return qs.filter(department=request.user.department)
+            return qs.none()  # Non-staff users can't see any grievances
+    
     def save_model(self, request, obj, form, change):
         # Check if the status has changed
         if 'status' in form.changed_data:
