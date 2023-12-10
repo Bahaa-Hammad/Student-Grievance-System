@@ -1,4 +1,7 @@
 from __future__ import annotations
+from base64 import urlsafe_b64decode, urlsafe_b64encode
+import base64
+from django.utils.encoding import force_bytes, force_str
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
@@ -6,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 import uuid
 
 from django.contrib.auth.base_user import BaseUserManager
+from .tokens import account_activation_token
 
 
 class AccountManager(BaseUserManager):
@@ -68,7 +72,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     reset_password = models.BooleanField(default=False)
     email_confirmed = models.BooleanField(default=False)
     email_reset = models.BooleanField(default=False)
-
+    sent_emails = models.IntegerField(default=0)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = AccountManager()
@@ -78,7 +82,22 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+    
+    @property
+    def uidb64(self: Account) -> str:
+        r'''Convert account email to base64 string and return it'''
+        return base64.urlsafe_b64encode(self.email.encode()).decode()
 
+    def uidb64_to_email(uidb64) -> str:
+        r'''Convert base64 to email string and return it'''
+        try:
+            byte_str  = base64.urlsafe_b64decode(uidb64)
+            email = byte_str.decode('utf-8')
+            return email
+        except Exception as e:
+            # Handle exceptions (like decoding errors)
+            return f"Error: {e}"
+    
     def create_student_account(email: str, password: str, first_name: str, last_name: str) -> Account:
             r'''
             creates an account object
@@ -119,3 +138,83 @@ class Account(AbstractBaseUser, PermissionsMixin):
             return students
         return None
 
+    def get_activation_token(self) -> str:
+            r'''
+            Creates activation token for an account
+
+            Return
+            ---------
+            Account activation token & success message
+            '''
+            try:
+                token = account_activation_token.make_token(self)
+                return token
+            except (Exception, TypeError, ValueError, OverflowError) as exception_message:
+                return None, str(exception_message)
+
+    def check_activation_token(uidb64: str, token: str) -> Account:
+        r'''
+        Checks the activation token sent via mail
+
+        Parameters
+        ---------
+        uidb64: str , token: str
+
+        Return
+        ---------
+        If the given token matches the account's: Account
+        '''
+        try:
+            email = Account.uidb64_to_email(uidb64)
+            account = Account.get_account(email)
+            if not account:
+                return None
+
+            token_check_result = account_activation_token.check_token(account, token)
+            
+            if token_check_result:
+                return account
+            else:
+                return None
+
+        except (Exception, TypeError, ValueError, OverflowError):
+            return None
+    
+    def activate_account(self) -> bool:
+        r'''
+        Activates an account
+
+        Parameters
+        ---------
+        self: Account
+
+        Return
+        ---------
+        True
+        '''
+        self.is_active = True
+        self.email_confirmed = True  # True: The token link is invalid
+        try:
+            self.save()
+            return True
+        except (Exception) as exception_message:
+            return False, str(exception_message)
+        
+    def reset_sent_emails(self) -> bool:
+        r'''
+        Resets number of sets emails to zero
+
+        Parameters
+        ---------
+        self: Account
+
+        Return
+        ---------
+        If emails reset succesfully, True & Success message 
+        '''
+        self.sent_emails = 0
+        try:
+            self.save()
+            return True
+        except (Exception) as exception_message:
+            return False, str(exception_message)

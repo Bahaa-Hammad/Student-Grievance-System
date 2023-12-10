@@ -1,6 +1,18 @@
 {% extends "templates/boilerplate.html" %}
 {% load static %}
 {% block content %}  
+
+<style>
+  .hero {
+    min-height: 100vh; /* Ensures at least full height of the viewport */
+    display: flex;
+    align-items: center; /* Centers content vertically */
+    justify-content: center; /* Centers content horizontally */
+    overflow: auto; /* Allows scrolling within the hero section if needed */
+    justify-content: center;
+  }
+</style>
+
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="hero">
     <div class="container position-relative">

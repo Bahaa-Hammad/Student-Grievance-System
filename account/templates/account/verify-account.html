@@ -1,0 +1,31 @@
+{% extends "templates/boilerplate.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="my-4 text-center">Verify Your Email Address</h2>
+      <a class="link-primary fw-bold text-center">{{email}}</a>
+      <p class="text-center">We have sent a verification email to your email address. Please check your inbox and click on the verification link to verify your account.</p>
+        <!--begin::Action-->
+        <div class="text-center mb-10">
+            <a href="{% url 'login'%}" class="btn btn-lg btn-primary fw-bold">Skip for now</a>
+        </div>
+        <!--end::Action-->
+        <!--begin::Action-->
+        <div class="fs-5">
+            <span class="fw-semibold text-gray-700">Did’t receive an email?</span>
+            <form method ="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-link link-primary fw-bold">Resend</button>
+            </form>
+        </div>
+        <!--end::Action-->
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
