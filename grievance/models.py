@@ -14,11 +14,11 @@ class Grievance(models.Model):
     student = models.ForeignKey('account.Account', on_delete=models.CASCADE, default=None)
 
     subject = models.CharField(max_length=200, blank=False, null=True)
-    type_of_complaint = models.CharField(choices=TYPE, null=True, blank=True,max_length=200)
+    type_of_complaint = models.IntegerField(choices=TYPE, null=True, blank=True,max_length=200)
     description = models.TextField(max_length=4000, blank=False, null=True)
     date = models.DateField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=3)
-    
+
     def __str__(self):
         return str(self.subject)
     def create_student_grievance(subject, type_of_complaint, department, description, student):
