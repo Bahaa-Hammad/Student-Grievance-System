@@ -2,9 +2,8 @@ from django.contrib import admin
 from .models import Grievance, GrievanceNotification
 from django.contrib import messages
 from apis.postmark.handler import send_notification_email 
-
-
 from django import forms
+from django.utils.html import format_html
 
 class GrievanceAdminForm(forms.ModelForm):
     admin_message = forms.CharField(widget=forms.Textarea, required=False, label="Admin Message")
@@ -12,17 +11,11 @@ class GrievanceAdminForm(forms.ModelForm):
     class Meta:
         model = Grievance
         fields = '__all__'
-        
-
-from django.contrib import admin
-from .models import Grievance, GrievanceNotification
 
 @admin.register(Grievance)
 class GrievanceAdmin(admin.ModelAdmin):
     form = GrievanceAdminForm
-    list_display = ['subject', 'student', 'status']
-    ordering = ['date']
-    
+            
     def get_queryset(self, request):
             qs = super().get_queryset(request)
             if request.user.is_superuser:
@@ -30,6 +23,11 @@ class GrievanceAdmin(admin.ModelAdmin):
             if request.user.is_staff:
                 return qs.filter(department=request.user.department)
             return qs.none()  # Non-staff users can't see any grievances
+    
+    def viewed_status(self, obj):
+        return format_html('<b>{}</b>', 'Viewed' if obj.viewed_by_admin else 'Never Viewed')
+    
+    viewed_status.short_description = 'Viewed Status'
     
     def save_model(self, request, obj, form, change):
         # Check if the status has changed
@@ -47,6 +45,10 @@ class GrievanceAdmin(admin.ModelAdmin):
             )
             send_notification_email(request,student_email,notification.message)
         else:
-            super().save_model(request, obj, form, change)
+            super().save_model(request, obj, form, change)    
+    list_display = ['id','subject', 'student', 'status']
+    ordering = ['date']
+    search_fields = ['id', 'subject', 'student__email']
+    list_filter = ['status']
             
 admin.site.register(GrievanceNotification)
