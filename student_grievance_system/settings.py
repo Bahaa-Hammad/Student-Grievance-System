@@ -82,7 +82,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    },
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'EduResolve',
+    #     'USER': 'admin',
+    #     'PASSWORD': 'EduResolve',
+    #     'HOST': 'localhost',  # Set to your database host
+    #     'PORT': '5432',       # Set to your database port
+    # },
 }
 
 

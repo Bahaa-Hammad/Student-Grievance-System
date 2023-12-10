@@ -14,7 +14,7 @@ class Grievance(models.Model):
     student = models.ForeignKey('account.Account', on_delete=models.CASCADE, default=None)
 
     subject = models.CharField(max_length=200, blank=False, null=True)
-    type_of_complaint = models.IntegerField(choices=TYPE, null=True, blank=True,max_length=200)
+    type_of_complaint = models.IntegerField(choices=TYPE, null=True, blank=True)
     description = models.TextField(max_length=4000, blank=False, null=True)
     date = models.DateField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=3)
@@ -55,6 +55,7 @@ class GrievanceNotification(models.Model):
     grievance = models.ForeignKey(Grievance, on_delete=models.CASCADE, related_name='notifications')
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
         return f"Notification for {self.grievance.subject}"
 

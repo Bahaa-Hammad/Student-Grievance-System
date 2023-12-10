@@ -75,6 +75,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     sent_emails = models.IntegerField(default=0)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
+    
     objects = AccountManager()
 
     class Meta:

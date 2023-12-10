@@ -18,7 +18,6 @@ def register_student_account(request):
     if request.method == 'POST':
         
         form = AccountCreationForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             email = form.cleaned_data.get("email")
             password = form.cleaned_data.get("password1")
@@ -26,7 +25,6 @@ def register_student_account(request):
             last_name = form.cleaned_data.get("last_name")
             account = Account.create_student_account(email,password,first_name,last_name)
             if account:
-                print('HERE')
                 return redirect('verify-account', uidb64=account.uidb64)
             else:
                 messages.error(request, 'An error has occurred during registration')
@@ -49,8 +47,6 @@ def login_account(request):
         if account:
 
             if not account.email_confirmed:
-                print(account.email)
-                print(account.uidb64)
                 return redirect('verify-account', uidb64=account.uidb64)
                 
         authenticated_account = authenticate(request, email=email, password=password)
